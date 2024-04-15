@@ -33,7 +33,18 @@ body {
   background: #555555;
 }
 
-.memory-value {
+.memory-buttons {
+  display: flex;
+  gap: 4px;
+  padding-right: 3px;
+}
+
+.memory-word-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.memory-word-value {
   text-align: center;
   font-size: 1.2rem;
 }

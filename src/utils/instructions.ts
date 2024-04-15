@@ -110,3 +110,28 @@ export const INSTRUCTIONS = [
         "help": "Pare a execução do programa. OBS.: Esta instrução deve ser executada para encerrar a execução do programa"
     }
   ]
+
+export const INSTRUCTIONS_CODE_TO_SYMBOL = {
+    11: "CEA",
+    12: "CAE",
+    21: "SOM",
+    22: "SUB",
+    23: "MUL",
+    24: "DIV",
+    25: "MOD",
+    31: "LER",
+    41: "IMP",
+    50: "NOP",
+    51: "DES",
+    52: "DPO",
+    53: "DPZ",
+    54: "DNE",
+    55: "DNZ",
+    56: "DDZ",
+    57: "DZZ",
+    58: "DDF",
+    59: "DFF",
+    61: "ADE",
+    62: "ADD",
+    70: "PAR"
+}
