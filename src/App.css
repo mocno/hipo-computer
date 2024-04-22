@@ -1,6 +1,7 @@
 body {
   font-family: monospace;
   background-color: #0f0f0f;
+  color: #ffffff;
 }
 
 .App {
@@ -49,6 +50,22 @@ body {
   font-size: 1.2rem;
 }
 
+.memory-word-input {
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ffffff;
+  -moz-appearance: textfield;
+}
+
+.memory-word-input::-webkit-inner-spin-button,
+.memory-word-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .control-unit {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -80,7 +97,7 @@ body {
 }
 .control-button-run:hover {
   background: #125e31;
-}
+} 
 .control-button-next {
   background: #5437d3;
 }
@@ -89,4 +106,14 @@ body {
 }
 .control-button:disabled {
   background: #444444;
+}
+
+.output-display {
+  width: 100%;
+  border-radius: 5px;
+  border: 0;
+  resize: vertical;
+  min-height: 30px;
+  background: #444;
+  color: #fff;
 }
