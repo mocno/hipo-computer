@@ -109,7 +109,7 @@ export const INSTRUCTIONS = [
         "symbol": "PAR",
         "help": "Pare a execução do programa. OBS.: Esta instrução deve ser executada para encerrar a execução do programa"
     }
-  ]
+]
 
 export const INSTRUCTIONS_CODE_TO_SYMBOL = {
     11: "CEA",
