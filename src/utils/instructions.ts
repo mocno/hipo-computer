@@ -2,7 +2,7 @@ export const INSTRUCTIONS = [
     {
         "code": 11,
         "symbol": "CEA",
-        "help": "  Copie o contéudo do endereço EE no acumulador. (AC recebe [EE])."
+        "help": "Copie o contéudo do endereço EE no acumulador. (AC recebe [EE])."
     },
     {
         "code": 12,
@@ -12,7 +12,7 @@ export const INSTRUCTIONS = [
     {
         "code": 21,
         "symbol": "SOM",
-        "help": "  Some o contéudo do endereço EE com o contéudo do acumulador e guarde o  resultado no acumulador. (AC recebe [AC] + [EE])"
+        "help": "Some o contéudo do endereço EE com o contéudo do acumulador e guarde o  resultado no acumulador. (AC recebe [AC] + [EE])"
     },
     {
         "code": 22,
