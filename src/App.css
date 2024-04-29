@@ -6,7 +6,7 @@ body {
 
 .App {
   max-width: 900px;
-  margin: 10px auto;
+  margin: 50px auto;
 }
 
 .instruction-list {
@@ -58,6 +58,7 @@ body {
   font-size: 1.2rem;
   color: #ffffff;
   -moz-appearance: textfield;
+  outline: none;
 }
 
 .memory-word-input::-webkit-inner-spin-button,
@@ -108,12 +109,38 @@ body {
   background: #444444;
 }
 
-.output-display {
+.output-display,
+.input-display {
   width: 100%;
   border-radius: 5px;
   border: 0;
   resize: vertical;
   min-height: 30px;
+  height: 100px;
   background: #444;
   color: #fff;
+  padding: 10px 2px;
+  outline: none;
+  font-size: 1.2rem;
+}
+
+.input-enable {
+  border: 2px dashed #d33747;
+}
+
+.container-registers {
+  margin-bottom: 20px;
+  width: auto;
+  display: flex;
+  gap: 20px;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.io-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+
+  gap: 20px;
 }
