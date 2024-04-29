@@ -1,5 +1,7 @@
 # Computador HIPO
-
+<p align="center">
+  <img width="192" title="Computador HIPO" alt="Logo do Computador HIPO" src="https://github.com/mocno/hipo-computer/blob/master/public/icon-192.png?raw=true">
+</p>
 Um Computador Hipotético projetado para introduzir noções basicas de como funciona os computadores. Esse projeto modela um computador simplificado, com objetivos didaticos. Apesar de muito simples, o Computador Hipo apresenta os principais componentes de um computador funcional dos dias de hoje.
 
 Caso queira executar o projeto, baixe-o e com o npm instalado, execute:
