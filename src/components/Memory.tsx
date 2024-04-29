@@ -65,11 +65,11 @@ export class WordMemory extends Component<WordMemoryProps, WordMemoryState> {
 
   componentDidUpdate(prevProps: Readonly<WordMemoryProps>, prevState: Readonly<WordMemoryState>): void {
     if (this.props.value !== prevProps.value) {
-      let instructionRepr: string | false = tryInstructionRepresentation(this.props.value);
+      let instructionRepr: string | false = tryInstructionRepresentation(this.props.value.toString());
   
       this.setState({
-        value: this.props.value,
-        numRepr: !this.state.numRepr && instructionRepr === false
+        value: formatWord(this.props.value.toString()),
+        numRepr: this.state.numRepr || instructionRepr === false
       });
     }
   }
