@@ -1,35 +1,22 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { ControlUnit } from "./components/ControlUnit";
+import { Input } from "./components/Input";
 import { Memory, WordMemory } from "./components/Memory";
-// import { INSTRUCTIONS } from "./utils/instructions";
 import { Output } from "./components/Output";
-import { Processador } from "./utils/parser";
-
-// function InstructionsList() {
-//   return (
-//     <div className="instructions-list">
-//       {INSTRUCTIONS.map(({ code, symbol, help }) => (
-//         <div className="instruction-list">
-//           <div>{code}</div>
-//           <div>{symbol}</div>
-//           <div>{help}</div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
+import { Processador, WORD_NOP, WORD_ZERO } from "./utils/parser";
 
 function App() {
-  const [cursor, setCursor] = useState(0);
+  const [cursor, setCursor] = useState<Address>(0);
   const [running, setRunning] = useState(false);
-  const [values, setValues] = useState(Array.from({ length: 100 }, (_, k) => 1100 + k + 2));
-  const [accumulator, setAccumulator] = useState(0);
+  const [values, setValues] = useState<Word[]>(Array.from({ length: 100 }, (_, k) => WORD_NOP));
+  const [accumulator, setAccumulator] = useState<Word>(WORD_ZERO);
   const [outputs, setOutputs] = useState("");
+  const [addressInput, setAddressInput] = useState<null|Address>(null);
 
-  const process = new Processador(values, setValues, accumulator, setAccumulator, setCursor, printInOutput);
-  
-  function printInOutput(value: string|number) {
+  const processor = new Processador(values, setValues, accumulator, setAccumulator, setCursor, printInOutput, setRunning, addressInput, setAddressInput);
+
+  function printInOutput(value: Word) {
     setOutputs(value.toString() + "\n" + outputs)
   }
 
@@ -37,32 +24,54 @@ function App() {
     setCursor(cursor === 99 ? 0 : cursor + 1)
   }
 
+  function step() {
+    let lastCursor = cursor;
+    incrementCunsor();
+    processor.parse(lastCursor);
+  }
+
   useEffect(() =>{
     if (running) {
-      process.parse(cursor);
-
-      const id = setTimeout(incrementCunsor, 500);
+      const id = setTimeout(step, 500);
 
       return () => clearTimeout(id);
     }
-  }, [cursor, running])
+  })
 
 
   return (
     <div className="App">
-      <Memory cursor={cursor} setCursor={setCursor} values={values} />
+      <h1>Computador HIPO</h1>
+      <Memory
+        cursor={cursor}
+        setCursor={setCursor}
+        values={values}
+        setValues={setValues}
+      />
+      <div className="container-registers">
+        <WordMemory
+          setValue={setAccumulator}
+          value={accumulator}
+          label={"Acumulador"}
+          disableButtons
+        />
+        <WordMemory
+          value={cursor}
+          label={"A.I."}
+          disableButtons
+        />
+      </div>
       <ControlUnit
         onStop={() => setRunning(false)}
         onRun={() => setRunning(true)}
         onNext={incrementCunsor}
         running={running}
+        disabled={addressInput!==null}
       />
-      <WordMemory
-        value={accumulator}
-        position={"Acumulador"}
-        disableButtons
-      />
-      <Output value={outputs} />
+      <div className="io-container">
+        <Output value={outputs} />
+        <Input setInput={processor.getInput.bind(processor)} enable={addressInput!==null} />
+      </div>
     </div>
   );
 }
